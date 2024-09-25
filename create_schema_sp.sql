@@ -1,3 +1,4 @@
+-- All content, trademarks, and data on this document are the property of Healthworks Analytics, LLC and are protected by applicable intellectual property laws. Unauthorized use, reproduction, or distribution of this material is strictly prohibited.
 /****** Script for ET New TechStack  ******/
 
 -- STEP:1

@@ -1,3 +1,4 @@
+# All content, trademarks, and data on this document are the property of Healthworks Analytics, LLC and are protected by applicable intellectual property laws. Unauthorized use, reproduction, or distribution of this material is strictly prohibited.
 # Module Intro: This Module is for the Data Processing of DCM Tactic.
 # Raw Data Source: Google Big Query.
 # Clean File Destination: GCS Bucket & Eventually creates a Big Query Table.
