@@ -1,0 +1,45 @@
+name: Add License Header
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  add-license:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run license script
+        run: |
+          python add_license.py  # Ensure this path points to the actual location of add_license.py
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add .
+          git reset HEAD .github/workflows/license.yml README.md add_license.py
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m 'Add license header to files [skip ci]'
+            git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+          fi
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
